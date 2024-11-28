@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      background-color: rgb(45, 756, 234); margin-left: 600px; margin-top: 200px; font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
+</head>
+<body>
+<button id="googleSignIn">Sign In with Google </button>
+<p id="userInfo"></p>
+<div id="imgCase">
+  </div>
+  <!-- firebase SDKs  -->
+</body>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    import { GoogleAuthProvider,getAuth, signInWithRedirect, } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+
+const provider = new GoogleAuthProvider();
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAqkmrmk9ObV1yhCvgDEdddNsVTsVIeE8o",
+      authDomain: "weather-26e8c.firebaseapp.com",
+      projectId: "weather-26e8c",
+      storageBucket: "weather-26e8c.appspot.com",
+      messagingSenderId: "357044430446",
+      appId: "1:357044430446:web:3a32175054242b4ae9a87f"
+    };
+  SignInWithPopup(auth, provider )
+  .then((result) =>{
+    // const auth = getAuth();
+signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  })
+  </script>
+</html>
